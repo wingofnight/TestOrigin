@@ -14,6 +14,17 @@ public class Question
 {
     public string TextQuestion;
     public List<Answer> Answers;
+
+    public void AnswersMixer()//Тасование Фишера-Йетса
+    {
+        for (int i = 0; i < Answers.Count; i++)
+        {
+            Answer tmp = Answers[i];
+            int randAnswer = Random.Range(0, Answers.Count);
+            Answers[i] = Answers[randAnswer];
+            Answers[randAnswer] = tmp;
+        }
+    }
 }
 [System.Serializable]
 public class Answer
