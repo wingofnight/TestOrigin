@@ -37,7 +37,7 @@ public class ShowResults : MonoBehaviour
         {
             if (GlobalLogic.CountTrueAnswers <= rangeLogic)
             {
-                TextResults.text = $"Ваш результат - {item}\nВы набрали - {GlobalLogic.CountTrueAnswers} очков!";
+                TextResults.text = $"Ваш результат - {item}\nВы набрали - {GlobalLogic.CountTrueAnswers} балла!";
                 break;
             }
             else
