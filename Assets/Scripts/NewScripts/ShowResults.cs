@@ -35,7 +35,7 @@ public class ShowResults : MonoBehaviour
        
         foreach (var item in Results)
         {
-            if (GlobalLogic.CountTrueAnswers <= rangeLogic)
+            if (GlobalLogic.CountTrueAnswers <= rangeLogic || item == Results[Results.Length - 1])
             {
                 TextResults.text = $"Ваш результат - {item}\nВы набрали - {GlobalLogic.CountTrueAnswers} балла!";
                 break;

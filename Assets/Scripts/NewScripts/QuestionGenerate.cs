@@ -17,9 +17,10 @@ public class QuestionGenerate : MonoBehaviour
 
     private Color standartColor;
     Question question;
-
+        
     void Start()
     {
+        GlobalLogic.CountTrueAnswers = 0;
         standartColor = buttons[0].GetComponent<Graphic>().color;
         foreach (var item in QuestionsList)
         {
