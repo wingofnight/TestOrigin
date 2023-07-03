@@ -13,7 +13,12 @@ public class QuestionGenerate : MonoBehaviour
     public List<Button> buttons;
     public Color correctAnswer = Color.green;
     public Color incorrectAnswer = Color.red;
-    public float timeDelay = 1;
+    public float DelayIfCorrect;
+    public float DelayIfInCorrect;
+
+    float timeDelay;
+
+
 
     private Color standartColor;
     Question question;
@@ -54,14 +59,25 @@ public class QuestionGenerate : MonoBehaviour
     {
         if (question.Answers[index].Value > 0)
         {
+            timeDelay = DelayIfCorrect;
             GlobalLogic.CountTrueAnswers += question.Answers[index].Value;// Прибавляет в счетчик правильных ответов значение. Некоторые ответы могут быть более ценны.
             print("Correct");
             buttons[index].GetComponent<Graphic>().color = correctAnswer;
         }
         else
         {
+            timeDelay = DelayIfInCorrect;
             buttons[index].GetComponent<Graphic>().color = incorrectAnswer;
             print("incorrect");
+
+            for (int i = 0; i < question.Answers.Count; i++)
+            {
+                if (question.Answers[i].Value > 0)
+                {
+                    buttons[i].GetComponent<Graphic>().color = correctAnswer;
+                }                
+            }
+
         }
 
         StartCoroutine(QuestionChanger());
@@ -77,7 +93,7 @@ public class QuestionGenerate : MonoBehaviour
     {
         yield return new WaitForSeconds(timeDelay);
         if (QuestionsList.Count > 0)
-        {
+        {            
             ShowQuest();
         }
         else

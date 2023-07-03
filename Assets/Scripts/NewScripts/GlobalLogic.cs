@@ -6,7 +6,7 @@ using UnityEngine;
 public static class GlobalLogic
 {
     static public List<Question> Questions = new List<Question>();
-    static public int CountTrueAnswers;
+    static public int CountTrueAnswers;   
 }
 
 [System.Serializable]
