@@ -54,20 +54,41 @@ public class QuestionGenerate : MonoBehaviour
     {
         if (question.Answers[index].Value > 0)
         {
+            timeDelay = 1;
             GlobalLogic.CountTrueAnswers += question.Answers[index].Value;// Прибавляет в счетчик правильных ответов значение. Некоторые ответы могут быть более ценны.
             print("Correct");
             buttons[index].GetComponent<Graphic>().color = correctAnswer;
         }
         else
         {
+            timeDelay = 2.5f;
             buttons[index].GetComponent<Graphic>().color = incorrectAnswer;
             print("incorrect");
+            //сюда добавляем подсветку неправильного ответа
+            
+            buttons[SearchRightAnswer(question.Answers)].GetComponent<Graphic>().color = correctAnswer;
         }
 
         StartCoroutine(QuestionChanger());
 
     }
-   
+
+    //функция ищет правильный ответ и возвращает индекс кнопки
+    private int SearchRightAnswer(List<Answer> answers)
+    {
+        int rightIndex = 0;
+        foreach (var item in answers)
+        {
+            
+            if (item.Value > 0)
+            {
+                return rightIndex;
+            }
+            rightIndex++;
+        }
+        return 0;
+    }
+
     public void TakeAnswer(int index)
     {
         //GlobalLogic. Abstract Result[index] +  question.Answers[index].ID;

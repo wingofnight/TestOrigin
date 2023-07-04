@@ -30,5 +30,5 @@ public class Question
 public class Answer
 {
     public string Text;
-    public int Value; // В зависимости от типа приложенияч (Тесты или Викторина) тспользовать ID или Value, для понятности.
+    public int Value; // В зависимости от типа приложения (Тесты или Викторина) тспользовать ID или Value, для понятности.
 }
