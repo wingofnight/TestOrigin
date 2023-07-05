@@ -346,8 +346,8 @@ MonoBehaviour:
   - {fileID: 1222441477}
   correctAnswer: {r: 0, g: 1, b: 0, a: 1}
   incorrectAnswer: {r: 1, g: 0, b: 0, a: 1}
-  DelayIfCorrect: 0.5
-  DelayIfInCorrect: 2
+  DelayIfCorrect: 0.4
+  DelayIfInCorrect: 1.3
 --- !u!1 &233892944
 GameObject:
   m_ObjectHideFlags: 0
