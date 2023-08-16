@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00048828125, y: 0}
+  m_AnchoredPosition: {x: 0.0005493164, y: 0}
   m_SizeDelta: {x: -1258.4509, y: -0.40005493}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &158958500
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67d4cc6bed9eb4d4dbc59bb55ca737e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scene: Test1
+  Scene: Start
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,28 +350,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonsNavigation:
-  - adress: Test 0
-    title: Test 0
-  - adress: Test 1
-    title: Test 1
-  - adress: Test 2
-    title: Test 2
-  - adress: Test 3
-    title: Test 3
-  - adress: Test 4
-    title: Test 4
-  - adress: Test 5
-    title: Test 5
-  - adress: Test 6
-    title: Test 6
-  buttons:
-  - {fileID: 811244781}
-  - {fileID: 1983727137}
-  - {fileID: 583289506}
-  - {fileID: 1609384403}
-  buttonsPage:
-  - {fileID: 807794728}
-  - {fileID: 2112958508}
+  - adress: 
+    title: 
+  buttons: []
+  buttonsQuantity: 1
 --- !u!1 &583289504
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,9 +652,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
-        m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
-        m_MethodName: PrevPage
+      - m_Target: {fileID: 187962808}
+        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1941,9 +1923,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 519420033}
-        m_TargetAssemblyTypeName: MenuNavigation, Assembly-CSharp
-        m_MethodName: NextPage
+      - m_Target: {fileID: 187962808}
+        m_TargetAssemblyTypeName: StartButton, Assembly-CSharp
+        m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

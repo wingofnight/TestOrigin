@@ -13,19 +13,25 @@ public class QuestionGenerate : MonoBehaviour
     public List<Button> buttons;
     public Color correctAnswer = Color.green;
     public Color incorrectAnswer = Color.red;
-    public float timeDelay = 1;
-
+    public float timeDelayTrue = 1;
+    public float timeDelayFalse = 2.5f;
+    public int restrictionsQuestions = 0;
+    
     private Color standartColor;
+    private float timeDelay = 1;
     Question question;
         
     void Start()
     {
         GlobalLogic.CountTrueAnswers = 0;
         standartColor = buttons[0].GetComponent<Graphic>().color;
-        foreach (var item in QuestionsList)
-        {
-            GlobalLogic.Questions.Add(item);
-        }
+        TylerReik.Extraction(QuestionsList);
+            foreach (var item in QuestionsList)
+            {
+              item.Mixer();//костыль
+              GlobalLogic.Questions.Add(item);
+            }
+        
         ShowQuest();
     }
 
@@ -36,13 +42,16 @@ public class QuestionGenerate : MonoBehaviour
         {
             item.GetComponent<Graphic>().color = standartColor;
         }
-
+        //ищи здесь
         int rand = Random.Range(0, QuestionsList.Count);
         question = QuestionsList[rand];
-        question.AnswersMixer();
-        QuestionsList.RemoveAt(rand);
+
+        //ћиксует необходимое количество вопросов в стеке.
+        // question.AnswersMixer();
+         QuestionsList.RemoveAt(rand);
 
         TextQuestion.text = question.TextQuestion;
+       // TextQuestion.text = QuestionsList.TextQuestion;
         for (int i = 0; i < buttons.Count; i++)
         {
             buttons[i].GetComponentInChildren<Text>().text = question.Answers[i].Text;
@@ -54,14 +63,14 @@ public class QuestionGenerate : MonoBehaviour
     {
         if (question.Answers[index].Value > 0)
         {
-            timeDelay = 1;
+            timeDelay = timeDelayTrue;
             GlobalLogic.CountTrueAnswers += question.Answers[index].Value;// ѕрибавл€ет в счетчик правильных ответов значение. Ќекоторые ответы могут быть более ценны.
             print("Correct");
             buttons[index].GetComponent<Graphic>().color = correctAnswer;
         }
         else
         {
-            timeDelay = 2.5f;
+            timeDelay = timeDelayFalse;
             buttons[index].GetComponent<Graphic>().color = incorrectAnswer;
             print("incorrect");
             //сюда добавл€ем подсветку неправильного ответа
@@ -79,7 +88,6 @@ public class QuestionGenerate : MonoBehaviour
         int rightIndex = 0;
         foreach (var item in answers)
         {
-            
             if (item.Value > 0)
             {
                 return rightIndex;
